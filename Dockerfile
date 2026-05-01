@@ -9,7 +9,9 @@ RUN mvn clean package -DskipTests
 FROM eclipse-temurin:21-jdk-jammy
 
 WORKDIR /app
-COPY --from=build /app/target/your-app-name.jar app.jar
+
+# 👇 THIS LINE FIXES YOUR ERROR
+COPY --from=build /app/target/*.jar app.jar
 
 EXPOSE 8080
 
